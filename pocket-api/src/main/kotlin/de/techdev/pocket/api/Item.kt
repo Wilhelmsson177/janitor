@@ -3,8 +3,9 @@ package de.techdev.pocket.api
 import com.fasterxml.jackson.annotation.JsonProperty
 
 /**
- * Created by Willi on 11.11.2016.
- * The basic item class.
+ * Representation of the Pocket Item.
+ *
+ * @author Willi Meierhof
  */
 
 data class Item(

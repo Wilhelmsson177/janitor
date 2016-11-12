@@ -8,3 +8,5 @@ import de.techdev.pocket.api.Item
  * Implementation of the Pocket Responses.
  */
 internal class RetrieveResponse(@JsonProperty("list") val items: Map<Int, Item>)
+
+internal class ModifyResponse(@JsonProperty("status") val status: Int)

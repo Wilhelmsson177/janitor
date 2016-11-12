@@ -1,7 +1,19 @@
 package de.techdev.pocket.api
 
 /**
- * Created by Willi on 11.11.2016.
+ * Interface of the modifying operations of the Pocket Api.
+ *
+ * @author Willi Meierhof
  */
 
-interface ModifyOperations
+interface ModifyOperations {
+    fun archive(item: Item) = archive(listOf(item))
+
+    fun archive(items: Collection<Item>)
+
+    fun delete(item: Item) = delete(listOf(item))
+
+    fun delete(items: Collection<Item>)
+
+
+}

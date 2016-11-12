@@ -12,4 +12,6 @@ internal open class PocketRequest {
 
     internal class Retrieve(val state: String, val sort: String, @JsonProperty("detailType") val details: String) : PocketRequest()
 
+    internal class ModifyRequest(val actions: Collection<Action>) : PocketRequest()
+
 }
