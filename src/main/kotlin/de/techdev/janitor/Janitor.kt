@@ -1,17 +1,25 @@
 package de.techdev.janitor
 
 import de.techdev.pocket.api.Pocket
-import java.io.PrintStream as Printer
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.annotation.Bean
+import org.springframework.scheduling.annotation.EnableScheduling
 
 fun main(args: Array<String>): Unit {
-    val name: String = "Janitor"
-    var version = "0.0.1"
+    SpringApplication.run(Janitor::class.java, *args)
+}
 
-    fun Printer.echo() = "$name v$version"
+@EnableScheduling
+@SpringBootApplication
+open class Janitor(
+        @Value("\${pocket.consumer}") private val consumer: String,
+        @Value("\${pocket.access}") private val access: String) {
 
-    println(System.out.echo())
+    @Bean
+    open fun pocket(): Pocket {
+        return Pocket.connect(consumer, access)
+    }
 
-    val items = Pocket.connect("60419-3260c95728889acdc1069407", "daa753a9-f561-f444-66c9-ba4119").retrieveOperations().items()
-
-    items.forEach(::println)
 }
